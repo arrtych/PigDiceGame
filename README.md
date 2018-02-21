@@ -1,6 +1,5 @@
 # PigDiceGame
 
----
 Browser simple dice game using Js and CSS.
 
 ---
