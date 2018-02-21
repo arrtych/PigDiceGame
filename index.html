@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pig Dice Game</title>
+	
+	<link rel="stylesheet" type="text/css" href="prax2.css">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<!-- jQuery Framework -->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	
+	<!-- Latest compiled and minified CSS -->	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	
+	<!-- Our Scripts -->
+	<script src="js/prax2.js"></script>
+	<script src="js/jquery.js"></script>
+	
+</head>
+<style>
+
+	
+</style>
+<script>
+
+
+</script>
+
+<body>
+<div class="container">
+<!-- <button class="btn btn-primary btn-lg"onclick="reset()">Reset</button> -->		
+	<div class="jumbotron">
+		<h1>The Pig game</h1>
+		
+		<div class="new1">
+			<button class="btn btn-primary btn-lg btn-new">New Game</button>		
+		</div>
+		
+		<div id="score">
+				<p class="normal"><b><span id="turn">Your</span> turn</b></p>
+				<p class="normal"><b>Score:<span id="tempscore1"> </span></b></p>
+				<!-- Arvuti vahepunktid:<span id="score2">?</span> -->
+				<!-- <div id="number"> </div> -->
+				<div class='dices'>
+				<div class='dices1' >
+					<div class="dice-1"><img src="img/dices/d1.png"></div>
+					<div class="dice-2"><img src="img/dices/d1.png"></div>
+				</div>
+				</div>
+				<br>
+		</div>
+		<div class="buttons">
+				<br>
+				<!-- <div class="buT"> -->
+					<button class="btn btn-success btn-lg btn-roll">Roll </button>
+					<button class="btn btn-warning btn-lg btn-stop">Stop</button>
+									
+				<!-- </div>	 -->
+		</div>
+		<div class="row">
+			<div class="col-md-6 visible-xs- col-xs-6">
+			<p class="normal"><b>Player</b></p>
+			</div>
+			<div class="col-md-6 visible-xs- col-xs-6">
+			<p class="normal1"><b>Pig</b></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 visible-xs- col-xs-6">
+				<div class="my_score">
+					<span id="myscore1">?</span><br><br>
+					 
+				</div>
+			</div>
+			<div class="col-md-6 visible-xs- col-xs-6" >
+				<div class="pig_score">
+					<span id="pigscore1">?</span><br><br>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 player_im col-xs-6 visible-xs-">
+				<img src="img/mario1.png" alt="player" class="img-responsive image">
+				
+			</div>
+			<div class="col-md-6 pig_im col-xs-6">
+				<img src="img/pig_cartoon.png" alt="pig" class="img-responsive image1">
+			</div>
+		</div>
+		
+	</div>
+	
+	
+	<div id="win-player" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="jumbotron">
+					<h1>Player wins!</h1>
+					<!-- <p>Yeeeee!</p> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="win-pig" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="jumbotron">
+					<h1>Pig wins!</h1>
+					<!-- <p>Oooops!</p> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-history panel-success tableScore player-table">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading">Player </div>
+	  <div class="panel-body">
+		 <table class="table table-bordered">
+			<tr class='head'>
+				<th>#</th>
+				<th title='Dice-1'>D1</th>
+				<th title='Dice-2'>D2</th>
+				<th title='Score'>S</th>
+				<th title='Overall Score'>OS</th>
+			</tr>
+		</table>
+	  </div>
+
+	
+	 
+	</div>
+	
+	<div class="panel panel-history panel-default tableScore1 pig-table">
+	  <!-- Default panel contents -->
+		<div class="panel-heading">
+			<div class="row">
+				<div class='col-lg-2 col-sm-4 col-xs-2' style='line-height: 33px;'>Pig</div>
+				<select id="pig-logic" class="form-control col-lg-4 col-sm-8 col-xs-10" style="width: 76px; float: right; margin-right: 10%;">
+					<option>9</option>
+					<option>10</option>
+					<option>11</option>
+					<option>12</option>
+					<option>13</option>
+					<option>14</option>
+					<option >15</option>
+					<option selected="">16</option>
+					<option>17</option>
+					<option>18</option>
+					<option>19</option>
+					<option>20</option>
+					<option>75</option>
+				</select>
+			</div>
+		</div>
+		  <div class="panel-body">
+			<table class="table table-bordered">
+			<tr class='head'>
+				<th>#</th>
+				<th title='Dice-1'>D1</th>
+				<th title='Dice-2'>D2</th>
+				<th title='Score'>S</th>
+				<th title='Overall Score'>OS</th>
+			</tr>
+	  </table>
+		  </div>
+
+	 
+	  
+	</div>
+</div>
+
+<div class="foster">
+	 © Artur Lipin  120949IAPB    2014
+</div>
+
+	
+</body>
+	
+</html>
